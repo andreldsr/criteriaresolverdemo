@@ -1,6 +1,6 @@
 package com.github.andreldsr.criteriaresolverdemo.dto;
 
-import com.github.andreldsr.annotation.ProjectionField;
+import com.github.andreldsr.criteriaresolver.annotation.ProjectionField;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
