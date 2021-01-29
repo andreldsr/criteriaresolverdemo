@@ -13,9 +13,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>criteriaresolverdemo</name>
 	<description>Demo project for Criteria Resolver</description>
-	<properties>
-		<java.version>11</java.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.andreldsr</groupId>
