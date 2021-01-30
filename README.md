@@ -91,6 +91,32 @@ WHERE
         and (product0_.description like ?)
         and product0_.price = 10;
 ```
+
+## Repository
+To use the SearchObject you must create a repository that extends CriteriaBaseRepository passing the base entity for the criteria and it will automatically have all the necessary methods
+```java
+@Repository
+public class ProductCriteriaRepository extends CriteriaBaseRepository<Product> {
+    public ProductCriteriaRepository(EntityManager entityManager) {
+        super(entityManager);
+    }
+}
+```
+
+## Service
+In your service class you define the return type of the method. When the return type its the same of the base entity of the criteria the repository offers the methods getResultList() and getSingleResult()
+```java
+public List<Product> getProductByCriteria(ProductSearchObject productSearchObject){
+    return productCriteriaRepository.getResultList(productSearchObject);
+}
+```
+When the return type its another class created with @ProjectionField annotation the repository offers you the getGenericQuery() method that receives the searchObject and the desired return class
+```java
+public List<ProductDTO> getProductByCriteria(ProductSearchObject productSearchObject){
+    return productCriteriaRepository.getGenericQuery(productSearchObject, ProductDTO.class).getResultList();
+}
+```
+
 ## Installation
 Criteria Resolver is under development, to use it in your project add the snapshots repository from maven central
 ```xml
