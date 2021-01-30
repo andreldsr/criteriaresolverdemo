@@ -5,7 +5,38 @@ A demo project to show the use cases of the library Criteria Resolver
 The API expects a Search Object and build the criteria query using only the filled fields
 
 # Example
-The ProductSearchObject with this fields filled
+The ProductSearchObject was created to representate all the possibilities in a hipotetical search screen and translates the optional fields in its properties using the Criteria Resolver annotation @CriteriaField to define the specific comparation in each field and the path to the propertie even if it is inside an inner object.
+```java
+@Getter
+@Setter
+public class ProductSearchObject extends SearchObject {
+    @CriteriaField(comparationType = CriteriaField.ComparationType.LIKE)
+    private String name;
+    @CriteriaField(comparationType = CriteriaField.ComparationType.LIKE)
+    private String description;
+    @CriteriaField(fieldName = "price", comparationType = CriteriaField.ComparationType.GREATER_EQUALS)
+    private Double minPrice;
+    @CriteriaField(fieldName = "price", comparationType = CriteriaField.ComparationType.LESS_EQUALS)
+    private Double maxPrice;
+    @CriteriaField(fieldName = "price")
+    private Double exactPrice;
+    @CriteriaField(fieldName = "category.name", comparationType = CriteriaField.ComparationType.LIKE)
+    private String category;
+}
+```
+Using it as the @RequestBody of an API Post endpoint will make it expect the following body
+```json
+{
+  "name": "string",
+  "description": "string",
+  "minPrice": 0,
+  "maxPrice": 0,
+  "exactPrice": 0,
+  "category": "string"
+}
+```
+
+And a ProductSearchObject with this fields filled
 ```json
 {
   "exactPrice": 10,
