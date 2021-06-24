@@ -118,22 +118,12 @@ public List<ProductDTO> getProductByCriteria(ProductSearchObject productSearchOb
 ```
 
 ## Installation
-Criteria Resolver is under development, to use it in your project add the snapshots repository from maven central
-```xml
-<repositories>
-    <repository>
-        <id>central</id>
-        <name>snapshots</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </repository>
-</repositories>
-```
-And add the dependency on you pom.xml
+Add the dependency on you pom.xml
 ```xml
 <dependency>
     <groupId>com.github.andreldsr</groupId>
     <artifactId>criteriaresolver</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
